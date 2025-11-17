@@ -1,0 +1,5 @@
+{
+  "name": "Real-Time Sensor Dashboard",
+  "description": "A web application to visualize real-time data from various sensors like GPS, BME280, HMC5883L, and a spectroscope. It provides a clean dashboard with live charts and value displays.",
+  "requestFramePermissions": []
+}
