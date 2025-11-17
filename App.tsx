@@ -2,6 +2,9 @@ import React, { useState, useEffect, useCallback } from 'react';
 import type { SensorPayload, HistoryPoint } from './types';
 import Dashboard from './components/Dashboard';
 import ConnectionManager from './components/ConnectionManager';
+import Sidebar from './components/Sidebar';
+import SettingsPage from './components/SettingsPage';
+import { MenuIcon } from './components/Icons';
 
 // Utility to generate random sensor data for simulation
 const generateMockData = (): SensorPayload => {
@@ -44,6 +47,8 @@ const App: React.FC = () => {
   const [reader, setReader] = useState<ReadableStreamDefaultReader | undefined>();
   const [isConnected, setIsConnected] = useState(false);
   const [availablePorts, setAvailablePorts] = useState<SerialPort[]>([]);
+  const [activeView, setActiveView] = useState<'dashboard' | 'settings'>('dashboard');
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const MAX_HISTORY_POINTS = 50;
 
@@ -179,30 +184,54 @@ const App: React.FC = () => {
   }, [reader, handleDisconnect]);
 
   return (
-    <div className="min-h-screen bg-gray-900 text-gray-200 font-sans">
-      <header className="bg-gray-800/50 backdrop-blur-sm p-4 shadow-lg sticky top-0 z-10">
-        <div className="container mx-auto flex justify-between items-center">
-          <div>
-            <h1 className="text-2xl font-bold text-cyan-400">Real-Time Sensor Dashboard</h1>
-            <p className="text-sm text-gray-400">Live data feed from LoRa connected sensors</p>
+    <div className="min-h-screen bg-gray-900 text-gray-200 font-sans flex">
+      <Sidebar
+        activeView={activeView}
+        onNavigate={setActiveView}
+        isOpen={isSidebarOpen}
+        onClose={() => setIsSidebarOpen(false)}
+      />
+
+      <div className="flex-1 flex flex-col md:ml-64"> {/* ml-64 to offset for the sidebar on desktop */}
+        <header className="bg-gray-800/50 backdrop-blur-sm p-4 shadow-lg sticky top-0 z-10">
+          <div className="flex justify-between items-center">
+            <div className="flex items-center gap-4">
+               <button
+                className="md:hidden text-gray-400 hover:text-white"
+                onClick={() => setIsSidebarOpen(true)}
+                aria-label="Open navigation menu"
+               >
+                 <MenuIcon className="w-6 h-6" />
+               </button>
+               <div>
+                <h1 className="text-xl md:text-2xl font-bold text-cyan-400">
+                  {activeView === 'dashboard' ? 'Real-Time Sensor Dashboard' : 'Settings'}
+                </h1>
+                {activeView === 'dashboard' && <p className="text-xs md:text-sm text-gray-400">Live data feed from LoRa connected sensors</p>}
+               </div>
+            </div>
+
+            <ConnectionManager
+              isConnected={isConnected}
+              availablePorts={availablePorts}
+              onConnect={connectToPort}
+              onConnectNew={handleRequestNewPort}
+              onDisconnect={handleDisconnect}
+            />
           </div>
-          <ConnectionManager 
-            isConnected={isConnected}
-            availablePorts={availablePorts}
-            onConnect={connectToPort}
-            onConnectNew={handleRequestNewPort}
-            onDisconnect={handleDisconnect}
-          />
-        </div>
-      </header>
-      <main className="container mx-auto p-4">
-        <Dashboard sensorData={sensorData} history={history} />
-      </main>
-      <footer className="text-center p-4 text-gray-500 text-xs">
-        <p>
-          {isConnected ? "Displaying live data from serial device." : "Sensor data is simulated for demonstration purposes."}
-        </p>
-      </footer>
+        </header>
+
+        <main className="flex-grow p-4 md:p-6">
+          {activeView === 'dashboard' && <Dashboard sensorData={sensorData} history={history} />}
+          {activeView === 'settings' && <SettingsPage />}
+        </main>
+
+        <footer className="text-center p-4 text-gray-500 text-xs">
+          <p>
+            {isConnected ? "Displaying live data from serial device." : "Sensor data is simulated for demonstration purposes."}
+          </a` + `p>
+        </footer>
+      </div>
     </div>
   );
 };
