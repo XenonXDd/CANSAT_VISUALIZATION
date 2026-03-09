@@ -1,4 +1,5 @@
 # CanSat Real-Time Sensor Dashboard
+<img width="1912" height="792" alt="image" src="https://github.com/user-attachments/assets/5a53bfa3-9381-4f42-a8e0-9f32cc0c27fa" />
 
 A modern, real-time web dashboard built with React, Vite, and TypeScript for monitoring and visualizing telemetry data from CanSat missions. 
 
