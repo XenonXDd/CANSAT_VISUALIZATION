@@ -25,7 +25,7 @@ This application is currently a **visualization demo** that runs a built-in simu
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/CANSAT_VISUALIZATION.git
+   git clone https://github.com/XenonXDd/CANSAT_VISUALIZATION.git
    cd CANSAT_VISUALIZATION
    ```
 
