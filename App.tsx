@@ -55,13 +55,13 @@ const App: React.FC = () => {
   const updateStateWithNewData = (newData: SensorPayload) => {
     setSensorData(newData);
     const newHistoryPoint: HistoryPoint = {
-        timestamp: new Date(newData.timestamp).toLocaleTimeString(),
-        temperature: newData.environment.temperature,
-        humidity: newData.environment.humidity,
-        pressure: newData.environment.pressure,
-        magX: newData.magnetometer.x,
-        magY: newData.magnetometer.y,
-        magZ: newData.magnetometer.z,
+      timestamp: new Date(newData.timestamp).toLocaleTimeString(),
+      temperature: newData.environment.temperature,
+      humidity: newData.environment.humidity,
+      pressure: newData.environment.pressure,
+      magX: newData.magnetometer.x,
+      magY: newData.magnetometer.y,
+      magZ: newData.magnetometer.z,
     };
     setHistory(prevHistory => [...prevHistory, newHistoryPoint].slice(-MAX_HISTORY_POINTS));
   }
@@ -99,7 +99,7 @@ const App: React.FC = () => {
       await portToConnect.open({ baudRate: 9600 });
       setPort(portToConnect);
       setIsConnected(true);
-      
+
       const textDecoder = new TextDecoderStream();
       if (portToConnect.readable) {
         portToConnect.readable.pipeTo(textDecoder.writable);
@@ -177,9 +177,9 @@ const App: React.FC = () => {
     readLoop();
 
     return () => {
-        if(reader){
-            reader.cancel().catch(e => console.error("Error cancelling reader:", e));
-        }
+      if (reader) {
+        reader.cancel().catch(e => console.error("Error cancelling reader:", e));
+      }
     }
   }, [reader, handleDisconnect]);
 
@@ -196,19 +196,19 @@ const App: React.FC = () => {
         <header className="bg-gray-800/50 backdrop-blur-sm p-4 shadow-lg sticky top-0 z-10">
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-4">
-               <button
+              <button
                 className="md:hidden text-gray-400 hover:text-white"
                 onClick={() => setIsSidebarOpen(true)}
                 aria-label="Open navigation menu"
-               >
-                 <MenuIcon className="w-6 h-6" />
-               </button>
-               <div>
+              >
+                <MenuIcon className="w-6 h-6" />
+              </button>
+              <div>
                 <h1 className="text-xl md:text-2xl font-bold text-cyan-400">
                   {activeView === 'dashboard' ? 'Real-Time Sensor Dashboard' : 'Settings'}
                 </h1>
                 {activeView === 'dashboard' && <p className="text-xs md:text-sm text-gray-400">Live data feed from LoRa connected sensors</p>}
-               </div>
+              </div>
             </div>
 
             <ConnectionManager
@@ -229,7 +229,7 @@ const App: React.FC = () => {
         <footer className="text-center p-4 text-gray-500 text-xs">
           <p>
             {isConnected ? "Displaying live data from serial device." : "Sensor data is simulated for demonstration purposes."}
-          </a` + `p>
+          </p>
         </footer>
       </div>
     </div>
