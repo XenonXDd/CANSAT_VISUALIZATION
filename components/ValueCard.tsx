@@ -10,11 +10,11 @@ interface ValueCardProps {
 
 const ValueCard: React.FC<ValueCardProps> = ({ title, value, unit, icon }) => {
   return (
-    <div className="bg-gray-700/50 p-4 rounded-md flex items-center justify-between">
+    <div className="bg-white shadow-sm border border-slate-200 p-4 rounded-2xl flex items-center justify-between">
       <div>
-        <p className="text-sm text-gray-400">{title}</p>
-        <p className="text-2xl font-semibold font-mono">
-          {value}<span className="text-lg text-gray-400 ml-1">{unit}</span>
+        <p className="text-sm text-slate-500">{title}</p>
+        <p className="text-2xl font-semibold font-mono text-slate-900">
+          {value}<span className="text-lg text-slate-500 ml-1">{unit}</span>
         </p>
       </div>
       {icon && <div className="opacity-50">{icon}</div>}

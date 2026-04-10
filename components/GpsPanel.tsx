@@ -10,8 +10,8 @@ interface GpsPanelProps {
 
 const GpsPanel: React.FC<GpsPanelProps> = ({ data }) => {
   return (
-    <div className="bg-gray-800/50 rounded-lg p-4 shadow-lg border border-gray-700">
-       <h2 className="text-lg font-semibold mb-4 text-cyan-300 flex items-center">
+    <div className="bg-white/90 rounded-3xl p-5 shadow-xl border border-slate-200">
+       <h2 className="text-lg font-semibold mb-4 text-sky-600 flex items-center">
         <GlobeIcon className="w-6 h-6 mr-2"/>
         GPS Data (NEO-7M)
       </h2>

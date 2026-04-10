@@ -20,8 +20,8 @@ const NavLink: React.FC<{
     onClick={onClick}
     className={`w-full flex items-center p-3 rounded-lg transition-colors duration-200 ${
       isActive
-        ? 'bg-cyan-500/20 text-cyan-300'
-        : 'text-gray-400 hover:bg-gray-700/50 hover:text-gray-200'
+        ? 'bg-sky-100 text-sky-700'
+        : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
     }`}
   >
     {icon}
@@ -39,7 +39,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeView, onNavigate, isOpen, onClo
     <>
       {/* Overlay for mobile */}
       <div
-        className={`fixed inset-0 bg-black/60 z-20 md:hidden transition-opacity ${
+        className={`fixed inset-0 bg-slate-900/30 z-20 md:hidden transition-opacity ${
           isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
         }`}
         onClick={onClose}
@@ -48,14 +48,14 @@ const Sidebar: React.FC<SidebarProps> = ({ activeView, onNavigate, isOpen, onClo
 
       {/* Sidebar */}
       <aside
-        className={`fixed top-0 left-0 h-full w-64 bg-gray-800 border-r border-gray-700/50 p-4 z-30
+        className={`fixed top-0 left-0 h-full w-64 bg-white/95 border-r border-slate-200 p-4 z-30
                    flex flex-col transition-transform md:translate-x-0 ${
                      isOpen ? 'translate-x-0' : '-translate-x-full'
                    }`}
       >
         <div className="flex items-center gap-3 mb-8 px-2">
-          <GlobeIcon className="w-8 h-8 text-cyan-400" />
-          <span className="text-xl font-bold text-gray-200">CanSat Dashboard</span>
+          <GlobeIcon className="w-8 h-8 text-sky-600" />
+          <span className="text-xl font-bold text-slate-900">CanSat Dashboard</span>
         </div>
 
         <nav className="flex-grow">
@@ -79,7 +79,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeView, onNavigate, isOpen, onClo
           </ul>
         </nav>
 
-        <div className="text-center text-xs text-gray-500">
+        <div className="text-center text-xs text-slate-500">
             Version 1.0.0
         </div>
       </aside>

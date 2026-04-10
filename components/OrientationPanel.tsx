@@ -60,8 +60,8 @@ const OrientationPanel: React.FC<OrientationPanelProps> = ({ gyro, mag }) => {
 
 
   return (
-    <div className="bg-gray-800/50 rounded-lg p-4 shadow-lg border border-gray-700 h-full flex flex-col">
-      <h2 className="text-lg font-semibold text-yellow-300 flex items-center mb-4">
+    <div className="bg-white/90 rounded-3xl p-5 shadow-xl border border-slate-200 h-full flex flex-col">
+      <h2 className="text-lg font-semibold text-amber-600 flex items-center mb-4">
         <CubeTransparentIcon className="w-6 h-6 mr-2" />
         3D Orientation
       </h2>
@@ -87,19 +87,19 @@ const OrientationPanel: React.FC<OrientationPanelProps> = ({ gyro, mag }) => {
             </div>
           </div>
           <div className="text-center mt-4 font-mono text-xs space-y-1">
-            <p><span className="text-gray-400">Roll:</span> {gyro.roll.toFixed(1).padStart(6, ' ')}°</p>
-            <p><span className="text-gray-400">Pitch:</span> {gyro.pitch.toFixed(1).padStart(5, ' ')}°</p>
-            <p><span className="text-gray-400">Yaw:</span> {gyro.yaw.toFixed(1).padStart(7, ' ')}°</p>
+            <p><span className="text-slate-500">Roll:</span> {gyro.roll.toFixed(1).padStart(6, ' ')}°</p>
+            <p><span className="text-slate-500">Pitch:</span> {gyro.pitch.toFixed(1).padStart(5, ' ')}°</p>
+            <p><span className="text-slate-500">Yaw:</span> {gyro.yaw.toFixed(1).padStart(7, ' ')}°</p>
           </div>
         </div>
 
         {/* Compass View */}
         <div className="flex flex-col items-center justify-center h-full">
-          <div className="relative w-40 h-40 md:w-48 md:h-48 rounded-full bg-gray-900/50 border-2 border-gray-700 flex items-center justify-center text-sm">
+          <div className="relative w-40 h-40 md:w-48 md:h-48 rounded-full bg-slate-100/90 border-2 border-slate-200 flex items-center justify-center text-sm">
             <span className="absolute top-2 text-red-400 font-bold">N</span>
-            <span className="absolute bottom-2 text-gray-400">S</span>
-            <span className="absolute left-3 text-gray-400">W</span>
-            <span className="absolute right-3 text-gray-400">E</span>
+            <span className="absolute bottom-2 text-slate-500">S</span>
+            <span className="absolute left-3 text-slate-500">W</span>
+            <span className="absolute right-3 text-slate-500">E</span>
             <div
               className="absolute w-full h-full"
               style={{
@@ -111,11 +111,11 @@ const OrientationPanel: React.FC<OrientationPanelProps> = ({ gyro, mag }) => {
                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 border-t-2 border-l-2 border-red-500 transform rotate-45 -mt-1"></div>
               </div>
             </div>
-            <div className="w-2 h-2 bg-gray-400 rounded-full z-10"></div>
+            <div className="w-2 h-2 bg-slate-400 rounded-full z-10"></div>
           </div>
-          <p className="mt-4 text-xl font-mono">
+          <p className="mt-4 text-xl font-mono text-slate-900">
             {heading.toFixed(1)}°
-            <span className="text-base text-gray-400 ml-2">
+            <span className="text-base text-slate-500 ml-2">
               {getDirection(heading)}
             </span>
           </p>

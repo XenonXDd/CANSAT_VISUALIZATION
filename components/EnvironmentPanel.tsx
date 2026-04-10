@@ -13,8 +13,8 @@ interface EnvironmentPanelProps {
 
 const EnvironmentPanel: React.FC<EnvironmentPanelProps> = ({ data, history }) => {
   return (
-    <div className="bg-gray-800/50 rounded-lg p-4 shadow-lg border border-gray-700 flex flex-col gap-4 h-full">
-      <h2 className="text-lg font-semibold text-green-300">Environmental (BME280)</h2>
+    <div className="bg-white/90 rounded-3xl p-5 shadow-xl border border-slate-200 flex flex-col gap-4 h-full backdrop-blur-sm">
+      <h2 className="text-lg font-semibold text-emerald-600">Environmental (BME280)</h2>
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <ValueCard 
           title="Temperature" 

@@ -184,7 +184,7 @@ const App: React.FC = () => {
   }, [reader, handleDisconnect]);
 
   return (
-    <div className="min-h-screen bg-gray-900 text-gray-200 font-sans flex">
+    <div className="min-h-screen bg-slate-100 text-slate-900 font-sans flex">
       <Sidebar
         activeView={activeView}
         onNavigate={setActiveView}
@@ -193,21 +193,21 @@ const App: React.FC = () => {
       />
 
       <div className="flex-1 flex flex-col md:ml-64"> {/* ml-64 to offset for the sidebar on desktop */}
-        <header className="bg-gray-800/50 backdrop-blur-sm p-4 shadow-lg sticky top-0 z-10">
+        <header className="bg-white/80 backdrop-blur-sm p-4 shadow-sm sticky top-0 z-10 border-b border-slate-200">
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-4">
               <button
-                className="md:hidden text-gray-400 hover:text-white"
+                className="md:hidden text-slate-500 hover:text-slate-900"
                 onClick={() => setIsSidebarOpen(true)}
                 aria-label="Open navigation menu"
               >
                 <MenuIcon className="w-6 h-6" />
               </button>
               <div>
-                <h1 className="text-xl md:text-2xl font-bold text-cyan-400">
+                <h1 className="text-xl md:text-2xl font-bold text-sky-600">
                   {activeView === 'dashboard' ? 'Real-Time Sensor Dashboard' : 'Settings'}
                 </h1>
-                {activeView === 'dashboard' && <p className="text-xs md:text-sm text-gray-400">Live data feed from LoRa connected sensors</p>}
+                {activeView === 'dashboard' && <p className="text-xs md:text-sm text-slate-500">Live data feed from LoRa connected sensors</p>}
               </div>
             </div>
 
@@ -226,7 +226,7 @@ const App: React.FC = () => {
           {activeView === 'settings' && <SettingsPage />}
         </main>
 
-        <footer className="text-center p-4 text-gray-500 text-xs">
+        <footer className="text-center p-4 text-slate-500 text-xs">
           <p>
             {isConnected ? "Displaying live data from serial device." : "Sensor data is simulated for demonstration purposes."}
           </p>

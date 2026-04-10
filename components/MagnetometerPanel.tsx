@@ -12,22 +12,22 @@ interface MagnetometerPanelProps {
 
 const MagnetometerPanel: React.FC<MagnetometerPanelProps> = ({ data, history }) => {
   return (
-    <div className="bg-gray-800/50 rounded-lg p-4 shadow-lg border border-gray-700 flex flex-col gap-4 h-full">
-      <h2 className="text-lg font-semibold text-purple-300 flex items-center">
+    <div className="bg-white/90 rounded-3xl p-5 shadow-xl border border-slate-200 flex flex-col gap-4 h-full">
+      <h2 className="text-lg font-semibold text-purple-600 flex items-center">
         <MagnetIcon className="w-5 h-5 mr-2" />
         Magnetic Field
       </h2>
       <div className="grid grid-cols-3 gap-4 text-center">
           <div>
-              <p className="text-sm text-gray-400">X-axis</p>
+              <p className="text-sm text-slate-500">X-axis</p>
               <p className="text-xl font-mono text-red-400">{data.x.toFixed(2)} µT</p>
           </div>
           <div>
-              <p className="text-sm text-gray-400">Y-axis</p>
+              <p className="text-sm text-slate-500">Y-axis</p>
               <p className="text-xl font-mono text-green-400">{data.y.toFixed(2)} µT</p>
           </div>
           <div>
-              <p className="text-sm text-gray-400">Z-axis</p>
+              <p className="text-sm text-slate-500">Z-axis</p>
               <p className="text-xl font-mono text-blue-400">{data.z.toFixed(2)} µT</p>
           </div>
       </div>
